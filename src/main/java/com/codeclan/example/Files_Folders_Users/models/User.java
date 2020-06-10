@@ -1,5 +1,6 @@
 package com.codeclan.example.Files_Folders_Users.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -17,7 +18,8 @@ public class User {
     @Column(name = "name")
     private String name;
 
-    @JsonIgnoreProperties("user")
+//    @JsonIgnoreProperties("user")
+    @JsonBackReference
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Folder> folders;
 
